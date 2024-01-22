@@ -13,6 +13,7 @@ import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import Informes from './contenedores/Informe/informes/src/components/Informes/Informes';
+import DashboardLista from "./contenedores/Dashboard/DashboardLista";
 import GrafoComunidadesSolo from './componentes/Graficos/GrafoComunidadesSolo';
 import { Navigate } from 'react-router-dom';
 import Error404 from './contenedores/404/index.jsx';
@@ -314,7 +315,7 @@ function DashboardContainer() {
         {/* <Route path="/Preocupaciones - Ven" element={<DashModelo />} /> */}
         <Route path="/Red motivacional del voto" element={<DashModelo />} />
         <Route path="/Sentimientos" element={<DashModelo />} />
-        {/* <Route path="/lista" element={<DashboardLista />} /> */}
+         <Route path="/lista" element={<DashboardLista />} /> 
         {/* <Route path="/Voto Emocional y Racional" element={<DashModelo />} /> */}
         
       </Routes>
