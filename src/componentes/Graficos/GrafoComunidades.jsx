@@ -1,77 +1,149 @@
 import React, { useState, useEffect } from 'react';
-import './Graficos.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import { Collapse, Tooltip, Button, Select} from 'antd';
-import video from './../../imagenes/InteraccionUsuariosInfluencia.mp4'
-import imagen from './../../imagenes/grafo_hashtags_menciones-2023-06-18-2023-06-18.PNG'
+import atributospersonalidad from './../../imagenes/atributos-de-personalidad.PNG'
+import atributospoliticos from './../../imagenes/atributos-de-politicos.PNG'
+import contcambio from './../../imagenes/continuidad-y-cambio.PNG'
+import emocionesbasicas from './../../imagenes/emociones-basicas.PNG'
+import votoemrac from './../../imagenes/Voto-emocional-y-racional.PNG'
+import preocupaciones from './../../imagenes/preocupaciones.PNG'
+import redmotivacional from './../../imagenes/red-motivacional-del-voto.PNG'
+import sentimientos from './../../imagenes/sentimientos.PNG'
+import preocupacionesVen from './../../imagenes/preocupaciones-Ven.png'
+import './Graficos.css'
+import { Tooltip, Select } from 'antd';
 //FILTRO FECHAS
 
 import jsonFechas from './../../datos/rango_fechas.json'
 //FIN FILTRO FECHAS
 
-export default function GraphComunidades(){
+export default function GrafosModelos(){
 
 
-// FILTRO FECHAS
-const [fechas, setFechas] = useState(jsonFechas.fechas)
-console.log(jsonFechas)
-const [filtroFecha, setFiltroFecha] = useState(fechas[0])
+ //FILTRO FECHAS
+ const [fechas, setFechas] = useState(jsonFechas.fechas)
+ const [filtroFecha, setFiltroFecha] = useState(fechas[0])
 
-const opciones = fechas
-.filter((fecha, index) => index > fechas.length - 4) // Filtra las últimas 3 fechas
-.map((fecha, index) => (
-  <Select.Option key={index} value={fecha}>
-    {fecha}
-  </Select.Option>
-));
+ const opciones = fechas
+ .filter((fecha, index) => index > fechas.length - 4) // Filtra las últimas 3 fechas
+ .map((fecha, index) => (
+   <Select.Option key={index} value={fecha}>
+     {fecha}
+   </Select.Option>
+ ));
 
-const handleFiltroFechaChange = (valor) => {
-  setFiltroFecha(valor);
-  console.log(valor)
-};
-// // FIN FILTRO FECHAS
+ const handleFiltroFechaChange = (valor) => {
+   setFiltroFecha(valor);
+   console.log(valor)
+ };
+ 
 
-
-
-  return (
-    <div className="fondo-grafo">
-    <div className="card-body">
-
-    {/* FILTRO FECHAS */}
-    <Select placeholder="Fechas" className='fechas-grafos' onChange={handleFiltroFechaChange} defaultValue={filtroFecha}>
-      {opciones}
-    </Select> 
-    
-
-
-    <div className='grafo-video' >
   
-    <Tooltip title="Click para ver el grafo">
-    <a href={`https://qsngrafos.vercel.app/hasgtags-menciones/Misiones/grafo_hashtags_menciones-${filtroFecha}.html`} target="_blank">
-    <div className='video-explicativo cartaGrafo'>
-      <img src={imagen} className='imagen-grafo' />
-    </div>
-    </a>
-    </Tooltip>
-    <div className='video-texto cartaGrafo'>
-    <video src={video} autoplay muted loop type="video/mp4" controls className="video-explicativo cartaGrafo" ></video>
-    <div className="texto-explicativo cartaGrafo scrollable-card" >
-      <br></br>
-      <br></br>
-      <br></br>
-    ¡Qué bueno que hayas elegido este grafo! Anteriormente, habíamos visto el grafo de coocurrencia de hashtags y te explicaba como podías descubrir los hashtags más comentados y su coocurrencia con otros, para poder identificar las tendencias en las conversaciones y los temas más populares. Ahora, con esta nueva representación visual, podrás detectar los hashtags con mayor relevancia o centralidad en las conversaciones en función de las menciones, eso quiere decir, aquellos que estuvieron más conectados con menciones en las publicaciones. 
-Cuando un hashtag está acompañado de varias menciones, es probable que esté vinculado a discusiones y conversaciones específicas en la red. Las menciones representan la interacción de los usuarios con ese hashtag en particular, lo que puede indicar que están participando en conversaciones relacionadas con ese tema. Esto puede ser una herramienta útil para comprender como interactúan los usuarios entre sí, e identificar aquellos más influyentes. También, puede ser relevante para comprender cómo se difunde la información en la red y cómo se conectan diferentes actores o temas a través de menciones y hashtags. 
-Comprendiendo que el alcance y la difusión de un hashtag puede estar relacionado con la cantidad de menciones que recibe; en el grafo se muestra la comunidad más relevante, identificando aquellas menciones y hashtags más conectados o con mayor influencia en la red, por ende, podemos identificar los hashtags que están siendo utilizados con mayor grupo de usuarios y seguramente con intereses comunes, pudiéndolos considerar líderes de opción o influenciadores en la comunidad.
-<strong>Cada nodo representa un hashtag (color rosa) o una mención (color azul) y las aristas la relación entre ellos</strong>. Cada arista tiene un peso que indique la frecuencia o intensidad de la relación entre los nodos, de ahí su grosor. 
-Un hashtag acompañado de múltiples menciones en el grafo sugiere que ese hashtag tiene una mayor visibilidad, participación y potencial influencia en la red social. Está generando discusiones, atrayendo la atención de los usuarios y posiblemente formando comunidades en torno a él.
 
-    </div>
-    </div>
-   
-    </div>
-    
-    </div>
-    </div>
-    );
-    }
+
+ return (
+  <div className="fondo-grafo">
+  <div className="card-body">
+
+ <Select placeholder="Fechas" className='fechas-grafos' onChange={handleFiltroFechaChange} defaultValue={filtroFecha}>
+    {opciones}
+  </Select>
+  <div className='modelos-grafos'>
+  <div className='grafo-video-modelos'>
+  <Tooltip title="Click para ver el grafo">
+      <div className='titulo-modelo'>Sentimientos</div>
+  <a href={`https://qsngrafos.vercel.app/modelos/cruz-roja/grafo_modelo-Sentimientos-${filtroFecha}.html`} target="_blank">
+  <div className=' cartaGrafo-modelos'>
+    <img src={sentimientos} className='imagen-grafo-modelos' />
+  </div>
+  </a>
+  </Tooltip>
+  </div>
+ 
+  <div className='grafo-video-modelos'>
+  <Tooltip title="Click para ver el grafo">
+  <div className='titulo-modelo'>Atributos</div>
+  <a href={`https://qsngrafos.vercel.app/modelos/cruz-roja/grafo_modelo-Atributos-${filtroFecha}.html`} target="_blank">
+  <div className=' cartaGrafo-modelos'>
+    <img src={atributospersonalidad} className='imagen-grafo-modelos' />
+  </div>
+  </a>
+  </Tooltip>
+  </div>
+  <div className='grafo-video-modelos'>
+  <Tooltip title="Click para ver el grafo">
+  <div className='titulo-modelo'>Clima Social</div>
+  <a href={`https://qsngrafos.vercel.app/modelos/cruz-roja/grafo_modelo-Clima%20social-${filtroFecha}.html`} target="_blank">
+  <div className=' cartaGrafo-modelos'>
+    <img src={atributospoliticos} className='imagen-grafo-modelos' />
+  </div>
+  </a>
+  </Tooltip>
+  </div>
+  <div className='grafo-video-modelos'>
+  <Tooltip title="Click para ver el grafo">
+  <div className='titulo-modelo'>Continuidad y cambio</div>
+  <a href={`https://qsngrafos.vercel.app/modelos/cruz-roja/grafo_modelo-Continuidad%20y%20cambio-${filtroFecha}.html`} target="_blank">
+  <div className=' cartaGrafo-modelos'>
+    <img src={contcambio} className='imagen-grafo-modelos' />
+  </div>
+  </a>
+  
+  </Tooltip>
+  </div>
+  <div className='grafo-video-modelos'>
+  <Tooltip title="Click para ver el grafo">
+  <div className='titulo-modelo'>Emociones Básicas (Plutchik)</div>
+  <a href={`https://qsngrafos.vercel.app/modelos/cruz-roja/grafo_modelo-Emociones%20Básicas%20(Plutchik)-${filtroFecha}.html`} target="_blank">
+  <div className=' cartaGrafo-modelos'>
+    <img src={emocionesbasicas} className='imagen-grafo-modelos' />
+  </div>
+  </a>
+  </Tooltip>
+  </div>
+  <div className='grafo-video-modelos'>
+  <Tooltip title="Click para ver el grafo">
+  <div className='titulo-modelo'>Preocupaciones</div>
+  <a href={`https://qsngrafos.vercel.app/modelos/cruz-roja/grafo_modelo-Preocupaciones-${filtroFecha}.html`} target="_blank">
+  <div className=' cartaGrafo-modelos'>
+    <img src={preocupaciones} className='imagen-grafo-modelos' />
+  </div>
+  </a>
+  </Tooltip>
+  </div>
+  <div className='grafo-video-modelos'>
+  <Tooltip title="Click para ver el grafo">
+  <div className='titulo-modelo'>Red motivacional del voto</div>
+  <a href={`https://qsngrafos.vercel.app/modelos/cruz-roja/grafo_modelo-Red%20motivacional%20del%20voto-${filtroFecha}.html`} target="_blank">
+  <div className=' cartaGrafo-modelos'>
+    <img src={redmotivacional} className='imagen-grafo-modelos' />
+  </div>
+  </a>
+  </Tooltip>
+  </div>
+  {/* <div className='grafo-video-modelos'>
+  <Tooltip title="Click para ver el grafo">
+  <div className='titulo-modelo'>Voto Emocional y Racional</div>
+  <a href={`https://qsngrafos.vercel.app/modelos/cruz-roja/grafo_modelo-Voto%20Emocional%20y%20Racional-${filtroFecha}.html`} target="_blank">
+  <div className=' cartaGrafo-modelos'>
+    <img src={votoemrac} className='imagen-grafo-modelos' />
+  </div>
+  </a>
+  </Tooltip>
+  </div> */}
+
+  {/* <div className='grafo-video-modelos'>
+  <Tooltip title="Click para ver el grafo">
+  <div className='titulo-modelo'>Preocupaciones VEN</div>
+  <a href={`https://qsngrafos.vercel.app/modelos/cruz-roja/grafo_modelo-Preocupaciones%20-%20Ven-${filtroFecha}.html`} target="_blank">
+  <div className=' cartaGrafo-modelos'>
+    <img src={preocupacionesVen} className='imagen-grafo-modelos'/>
+  </div>
+  </a>
+  </Tooltip>
+  </div> */}
+  </div>
+  </div>
+  </div>
+ 
+  );
+  }
